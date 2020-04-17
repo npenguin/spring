@@ -1,5 +1,6 @@
 const DIMENTION = 2;
-const DELTA_T = 1.0;
+const DELTA_T = 0.3;
+const NUM_OF_STEPS = 10000;
 const GRAVITY = 1.0;
 
 // setup: canvas
@@ -125,7 +126,12 @@ balls.push(ball1);
 balls.push(ball2);
 springs.push(spring);
 
-function loop() {
+var start = null;
+
+function loop(timestamp) {
+  if(!start) start = timestamp;
+  var elapsed_steps = timestamp - start;
+  if (elapsed_steps > NUM_OF_STEPS) return;
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
   for (let i = 0; i < springs.length; ++i) {
     console.log("spring (" + i + "): " + springs[i].distance);
@@ -137,9 +143,9 @@ function loop() {
     balls[i].calcForce();
     balls[i].update();
   }
-  requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
 }
 
 document.getElementById("start_button").onclick = function() {
-  loop();
+  requestAnimationFrame(loop);
 }

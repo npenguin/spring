@@ -25,13 +25,13 @@ canvas {
 }
 
 #start_button {
-  margin: auto;
+  font-size: large;
   background-color: white;
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #67c5ff;
-  border: solid 2px #67c5ff;
+  color: red;
+  border: solid 2px red;
   border-radius: 3px;
   transition: .4s;
 }
